@@ -207,3 +207,23 @@ It avoids building a full global correlation matrix for all stocks. Instead, it:
 4. computes correlations only on the selected tickers for the specific rolling window
 
 This keeps the dashboard responsive and memory-efficient.
+
+## Data Notes
+
+The provided `stock_data.zip` dataset does not contain all expected market dates between the observed start and end dates.
+
+The CSV filenames follow the format:
+
+```text
+YYYYMMDD.csv
+```
+
+However, the dataset contained approximately 893 trading dates, whereas the full expected market calendar (based on NYSE trading calendar dates) for the same period would likely contain 1100+ dates.
+
+Because of the large number of missing dates, missing observations were not forward-filled or extrapolated. Instead, the application assumes that the supplied dates represent the effective trading calendar for the dataset.
+
+As a result:
+
+- rolling correlations may occasionally move in a step-like manner
+- some correlation transitions may appear less smooth than in a fully continuous market dataset
+- the analysis reflects only the available observations provided in the source data
