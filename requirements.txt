@@ -1,0 +1,7 @@
+polars
+pandas
+numpy
+streamlit
+plotly
+pyarrow
+pytest
